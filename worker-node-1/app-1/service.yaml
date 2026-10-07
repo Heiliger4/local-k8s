@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-1-service
+  namespace: web-lab
+spec:
+  selector:
+    app: app-1
+  ports:
+    - port: 8081
+      targetPort: 80
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Specifies the core v1 API version for Service network resources
+# apiVersion: v1
+
+# Tells Kubernetes to create a Service object (an internal network load balancer & DNS entry)
+# kind: Service
+
+# Metadata section containing resource naming and namespace scoping
+# metadata:
+
+# Unique name of this Service (also becomes the internal DNS hostname: http://app-1-service)
+#   name: app-1-service
+
+# Target namespace where this Service will be registered
+#   namespace: web-lab
+
+# Specification section defining port forwarding and selector rules
+# spec:
+
+# Selector matching pods with label 'app: app-1' to receive traffic routed by this Service
+#   selector:
+#     app: app-1
+
+# List of network port mappings managed by this Service
+#   ports:
+
+#     # Port number exposed internally inside the cluster DNS (e.g., http://app-1-service:8081)
+#     - port: 8081
+
+#       # Target port on the pod container where the traffic is forwarded to (Port 80 Nginx)
+#       targetPort: 80

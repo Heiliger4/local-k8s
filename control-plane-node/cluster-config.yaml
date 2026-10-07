@@ -1,0 +1,37 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Specifies the Kind (Kubernetes in Docker) resource object type for cluster topology
+# kind: Cluster
+
+# Specifies the Kind API version schema (v1alpha4 for Kind cluster configurations)
+# apiVersion: kind.x-k8s.io/v1alpha4
+
+# List of node machines to be provisioned in this cluster topology
+# nodes:
+
+# First machine: Role set to control-plane (Master server running API server, etcd, scheduler)
+#   - role: control-plane
+
+# Second machine: Role set to worker (Compute server 1 running user workloads)
+#   - role: worker
+
+# Third machine: Role set to worker (Compute server 2 running user workloads)
+#   - role: worker

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kubernetes Microservices Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-globes">
+    <div class="globe globe-1"></div>
+    <div class="globe globe-2"></div>
+  </div>
+
+  <main class="dashboard-container">
+    <header class="header">
+      <div class="brand">
+        <span class="badge">Microservice Architecture</span>
+        <h1>DevOps Lab Cluster Dashboard</h1>
+      </div>
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span id="cluster-status">System Online</span>
+      </div>
+    </header>
+
+    <section class="grid-metrics">
+      <div class="card metric-card">
+        <span class="label">Total Deployments</span>
+        <h2 id="metric-deployments">--</h2>
+        <span class="trend">Live from Backend 2</span>
+      </div>
+      <div class="card metric-card">
+        <span class="label">Cluster Uptime</span>
+        <h2 id="metric-uptime">--</h2>
+        <span class="trend positive">Target: 99.9%</span>
+      </div>
+      <div class="card metric-card">
+        <span class="label">Requests / Sec</span>
+        <h2 id="metric-rps">--</h2>
+        <span class="trend">Active Load</span>
+      </div>
+      <div class="card metric-card">
+        <span class="label">CPU / Memory</span>
+        <h2 id="metric-resource">--</h2>
+        <span class="trend">Nodes Optimal</span>
+      </div>
+    </section>
+
+    <div class="grid-content">
+      <section class="card section-users">
+        <div class="section-header">
+          <h3>👥 Team Members</h3>
+          <span class="endpoint-tag">GET /api/users (Backend 1)</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody">
+              <tr><td colspan="4" class="loading">Fetching users from Backend 1...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card section-nodes">
+        <div class="section-header">
+          <h3>⚡ Microservices Health</h3>
+          <span class="endpoint-tag">Cluster Topology</span>
+        </div>
+        <div class="node-list">
+          <div class="node-item">
+            <div class="node-info">
+              <h4>Frontend App (App 1)</h4>
+              <p>Nginx Web Server • Port 8081</p>
+            </div>
+            <span class="status-tag status-active">Running</span>
+          </div>
+          <div class="node-item">
+            <div class="node-info">
+              <h4>Users API (App 2 / Backend 1)</h4>
+              <p>Node.js Express • Port 8082</p>
+            </div>
+            <span class="status-tag status-active" id="backend1-tag">Connecting...</span>
+          </div>
+          <div class="node-item">
+            <div class="node-info">
+              <h4>Analytics API (App 3 / Backend 2)</h4>
+              <p>Node.js Express • Port 8083</p>
+            </div>
+            <span class="status-tag status-active" id="backend2-tag">Connecting...</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

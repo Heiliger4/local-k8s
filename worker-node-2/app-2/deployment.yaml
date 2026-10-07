@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-2
+  namespace: web-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-2
+  template:
+    metadata:
+      labels:
+        app: app-2
+    spec:
+      containers:
+        - name: app
+          image: backend-1:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082
+          envFrom:
+            - configMapRef:
+                name: app-2-config
+            - secretRef:
+                name: app-2-secret
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Specifies the apps/v1 API version for workload management resources (Deployments)
+# apiVersion: apps/v1
+
+# Tells Kubernetes to create a Deployment object (manages pod replicas, updates, self-healing)
+# kind: Deployment
+
+# Metadata section containing resource naming and namespace scoping
+# metadata:
+
+# The unique name of this Deployment controller
+#   name: app-2
+
+# The target namespace where this Deployment will be created
+#   namespace: web-lab
+
+# Specification section defining the desired state of the Deployment
+# spec:
+
+# Desired number of pod instances to run concurrently across the cluster
+#   replicas: 1
+
+# Selector configuration matching pods managed by this Deployment
+#   selector:
+
+#     # Labels that pods must have to be selected and controlled by this Deployment
+#     matchLabels:
+#       app: app-2
+
+# Pod template spec defining the structure of new Pods created by this Deployment
+#   template:
+
+#     # Metadata attached to every Pod created from this template
+#     metadata:
+
+#       # Labels assigned to every created Pod (matches the selector above)
+#       labels:
+#         app: app-2
+
+#     # Specification of containers and settings inside every created Pod
+#     spec:
+
+#       # List of containers running inside this Pod
+#       containers:
+
+#         # Unique name of the container inside the Pod
+#         - name: app
+
+#           # Custom Docker image built for Users API microservice
+#           image: backend-1:v1
+
+#           # Tells Kubernetes to use the locally loaded Docker image instead of pulling from remote registry
+#           imagePullPolicy: Never
+
+#           # List of network ports exposed by this container
+#           ports:
+
+#             # Port number on which the Node.js Express server listens (Port 8082)
+#             - containerPort: 8082
+
+#           # Bulk-injects all keys from ConfigMaps and Secrets into environment variables
+#           envFrom:
+
+#             # References the app-2-config ConfigMap data keys
+#             - configMapRef:
+#                 name: app-2-config
+
+#             # References the app-2-secret Secret data keys
+#             - secretRef:
+#                 name: app-2-secret
